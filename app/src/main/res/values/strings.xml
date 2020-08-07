@@ -7,4 +7,5 @@
     <string name="secondary_text_landing">Top up your balance with just few clicks</string>
     <string name="instruction">Click on the RECHARGE button to get started.</string>
     <string name="retake">Retake</string>
+    <string name="instruction_second">Confirm if the PIN code is correct.\n \nIf incorrect, you can edit the PIN Code manually or retake scan of the card.</string>
 </resources>

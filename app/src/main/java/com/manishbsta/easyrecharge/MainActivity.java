@@ -1,11 +1,5 @@
 package com.manishbsta.easyrecharge;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -20,8 +14,15 @@ import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
@@ -39,7 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView imgViewCaptured;
     private TextInputEditText etPin;
 
-    private RelativeLayout rlMain;
+    private LinearLayout llMain;
+    private Toolbar toolbar;
 
     private Bitmap img;
     CropImage.ActivityResult result;
@@ -61,7 +63,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btnRecharge = findViewById(R.id.btnRecharge);
         Button btnRetake = findViewById(R.id.btnRetake);
         etPin = findViewById(R.id.etPin);
-        rlMain = findViewById(R.id.rlMain);
+        llMain = findViewById(R.id.llMain);
+
+        toolbar = findViewById(R.id.toolbar_main);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Go Back");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         btnRecharge.setOnClickListener(this);
         btnRetake.setOnClickListener(this);
@@ -96,13 +103,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-        if(id == R.id.btnRetake) {
+        if (id == R.id.btnRetake) {
             pickImage();
         }
     }
 
     private void showSnackBar(String message, String action) {
-        Snackbar.make(rlMain, message, Snackbar.LENGTH_LONG)
+        Snackbar.make(llMain, message, Snackbar.LENGTH_LONG)
                 .setAction(action, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
