@@ -6,4 +6,5 @@
     <string name="primary_text_landing">Recharging your balance has never been so easy!</string>
     <string name="secondary_text_landing">Top up your balance with just few clicks</string>
     <string name="instruction">Click on the RECHARGE button to get started.</string>
+    <string name="retake">Retake</string>
 </resources>

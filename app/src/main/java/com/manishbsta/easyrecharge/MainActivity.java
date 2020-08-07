@@ -17,29 +17,20 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageActivity;
-import com.theartofdev.edmodo.cropper.CropImageView;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -62,17 +53,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         init();
         Intent intent = getIntent();
         sim_code = intent.getStringExtra("sim_code");
-        pickCamera();
+        pickImage();
     }
 
     private void init() {
         imgViewCaptured = findViewById(R.id.imgViewCaptured);
         Button btnRecharge = findViewById(R.id.btnRecharge);
+        Button btnRetake = findViewById(R.id.btnRetake);
         etPin = findViewById(R.id.etPin);
         rlMain = findViewById(R.id.rlMain);
 
         btnRecharge.setOnClickListener(this);
-
+        btnRetake.setOnClickListener(this);
     }
 
     @Override
@@ -103,6 +95,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         }
+
+        if(id == R.id.btnRetake) {
+            pickImage();
+        }
     }
 
     private void showSnackBar(String message, String action) {
@@ -110,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setAction(action, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        pickCamera();
+                        pickImage();
                     }
                 })
                 .setActionTextColor(Color.parseColor("#FFB0D9B9"))
@@ -138,13 +134,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            pickCamera();
+            pickImage();
         } else {
             Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void pickCamera() {
+    private void pickImage() {
         if (!checkPermission()) {
             askPermission();
 
