@@ -16,7 +16,7 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/barcode"
+        android:src="@drawable/img_barcode"
         android:layout_marginTop="80dp"
         android:scaleType="centerCrop"/>
 
@@ -58,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_recharge"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_below="@+id/tilPin"
                 android:layout_marginTop="30dp"/>
 
