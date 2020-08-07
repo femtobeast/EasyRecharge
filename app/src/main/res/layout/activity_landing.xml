@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LandingActivity">
 
+    <include android:id="@+id/toolbar_landing" layout="@layout/toolbar_layout"/>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabRecharge"
+        style="?attr/selectableItemBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fabRecharge"
-        android:src="@drawable/ic_flash"
-        app:rippleColor="@color/colorPrimaryDark"
-        android:backgroundTint="@color/colorPrimary"
-        style="?attr/selectableItemBackground"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="30dp"/>
+        android:layout_margin="35dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/ic_flash"
+        app:rippleColor="@color/colorPrimaryDark" />
 
 </RelativeLayout>

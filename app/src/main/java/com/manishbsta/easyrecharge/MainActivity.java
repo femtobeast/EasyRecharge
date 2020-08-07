@@ -91,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 showSnackBar("PIN digits less than 16", "Retake Scan");
 
             } else {
-
                 //intent to dial number directly
                 String pinWithCode = "*" + sim_code + "*" + pin + "#";
 
