@@ -3,4 +3,7 @@
     <string name="your_pin_goes_here">YOUR PIN GOES HERE</string>
     <string name="btn_recharge">Recharge</string>
     <string name="about_developer">About Developer</string>
+    <string name="primary_text_landing">Recharging your balance has never been so easy!</string>
+    <string name="secondary_text_landing">Top up your balance with just few clicks</string>
+    <string name="instruction">Click on RECHARGE button to get started.</string>
 </resources>
