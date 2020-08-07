@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">EasyRecharge</string>
+    <string name="your_pin_goes_here">YOUR PIN GOES HERE</string>
+    <string name="btn_recharge">Recharge</string>
+</resources>
