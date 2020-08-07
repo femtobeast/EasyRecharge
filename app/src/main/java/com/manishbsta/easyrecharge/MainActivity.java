@@ -32,6 +32,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -41,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextInputEditText etPin;
 
     private LinearLayout llMain;
-    private Toolbar toolbar;
 
     private Bitmap img;
     CropImage.ActivityResult result;
@@ -65,9 +65,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         etPin = findViewById(R.id.etPin);
         llMain = findViewById(R.id.llMain);
 
-        toolbar = findViewById(R.id.toolbar_main);
+        Toolbar toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Go Back");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Go Back");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         btnRecharge.setOnClickListener(this);
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         int id = v.getId();
 
-        pin = etPin.getText().toString().trim();
+        pin = Objects.requireNonNull(etPin.getText()).toString().trim();
 
         if (id == R.id.btnRecharge) {
             if (TextUtils.isEmpty(pin)) {
@@ -177,6 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if (resultCode == RESULT_OK) {
 
+                assert result != null;
                 Uri resultUri = result.getUri();
 
                 try {
@@ -216,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             //set text to etPin
-            etPin.getText().clear();
+            Objects.requireNonNull(etPin.getText()).clear();
             String pin = sb.toString().trim();
             etPin.setText(pin.replaceAll("[^0-9]", ""));
         }

@@ -3,7 +3,6 @@ package com.manishbsta.easyrecharge;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -16,7 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import org.w3c.dom.Text;
+import java.util.Objects;
 
 public class SIMChooserDialog extends DialogFragment {
     String sim = "";
@@ -24,7 +23,7 @@ public class SIMChooserDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        final LayoutInflater inflater = getActivity().getLayoutInflater();
+        final LayoutInflater inflater = Objects.requireNonNull(getActivity()).getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_sim_chooser, null);
 
         RadioGroup radioGroup = view.findViewById(R.id.rgSIM);
